@@ -1,0 +1,55 @@
+'''
+                                        2023.11.21
+已命名:
+ans = 0-9 數列
+q = 題目
+x = 次數
+a.b = 回答值
+p = 輸入之4位數字
+p1.p2.p3.p4 = 輸入數字之拆分
+
+'''
+import random
+
+ans = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+random.shuffle(ans)                                     # 將 ans 數列順序打亂
+q = f"{ans[0]}{ans[1]}{ans[2]}{ans[3]}"
+p = 0000
+x = 0
+#print(q)                                                # 測試 ans
+while p != q :
+    a = 0 ; b = 0 ; x += 1
+    p = int(input("請輸入四位數整數\n"))
+    p1 = p // 1000
+    p2 = (p // 100) % 10
+    p3 = (p // 10) % 10
+    p4 = p % 10
+    p = f"{p1}{p2}{p3}{p4}"
+
+    if p1 == ans[0]:
+        a += 1
+    elif p1 == ans[1] or p1 == ans[2] or p1 == ans[3]:
+         b += 1
+
+    if p2 == ans[1]:
+        a += 1
+    elif p2 == ans[0] or p2 == ans[2] or p2 == ans[3]:
+        b += 1
+
+    if p3 == ans[2]:
+        a += 1
+    elif p3 == ans[0] or p3 == ans[1] or p3 == ans[3]:
+        b += 1
+
+    if p4 == ans[3]:
+        a += 1
+    elif p4 == ans[0] or p4 == ans[1] or p4 == ans[2]:
+        b += 1
+
+    print(f"{a}A{b}B")
+
+
+
+print("正確答案!!!")
+print(p1, p2, p3, p4)    # 測試 ans
+print(f"共猜了{x}次")
